@@ -1,0 +1,37 @@
+<?php require 'templates/header.phtml';?>
+<h1 class="d-flex m-5 justify-content-center">Detalle de la reserva</h1>
+    <div class="d-flex m-5" style="background-color: white; border: 1px solid lightgray; border-radius: 10px;">
+        <img width="30%" height="300" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;"
+            src="https://www.barcelonairporthotel.com/wp-content/uploads/2023/09/Deluxe-2022-1.jpg" alt="">
+        <div class="d-flex flex-column justify-content-between p-3" style="width: 70%;">
+            <div class="d-flex justify-content-between">
+                <h4>Habitacion <?= $reserve->tamaño ?></h4>
+                <?php if ($reserve->finalizada === 0) : ?>
+                    <h6 class="text-warning" style="font-weight: bold;">PENDIENTE</h6>
+                <?php else : ?>
+                    <h6 class="text-success" style="font-weight: bold;">CONFIRMADA</h6>
+                <?php endif ?>
+            </div>
+            <h5>Codigo de reserva: <?= $reserve->id ?></h5>
+            <div class="d-flex justify-content-between">
+                <h5 style="margin-right: 200px;"><?= $reserve->cant_noches ?> noches</h5>
+                <h5 style="font-weight: bold;">Total $<?= $total->valor ?></h5>
+            </div>
+            <?php if ($reserve->finalizada === 0) : ?>
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-danger">
+                <a class="nav-link active" aria-current="page" href="<?=BASE_URL?>deleteReserve/<?= $reserve->id ?>">Cancelar reserva</a>
+                </button>
+                <div>
+                    <button type="button" class="btn btn-secondary">
+                    <a class="nav-link active" aria-current="page" href="<?=BASE_URL?>formModificReserve/<?= $reserve->id ?>">Editar</a>
+                    </button>
+                    <button type="button" class="btn btn-success">
+                    <a class="nav-link active" aria-current="page" href="<?=BASE_URL?>formConfirmReserve/<?= $reserve->id ?>">Completar</a>
+                    </button>
+                </div>
+            </div>
+            <?php endif ?>
+        </div>
+    </div>
+<?php require 'templates/footer.phtml' ?>

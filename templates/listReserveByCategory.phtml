@@ -1,0 +1,29 @@
+<?php require 'templates/header.phtml' ?>
+
+<div class="container mb-5">
+    <h1 class="card-title  d-flex justify-content-center mt-2 mb-4">Listado de reservas </h1>
+    <h2 class="card-title  d-flex justify-content-center mt-2 mb-4"><?=$roomSize->tamaño ?></h2>
+    <div  class="d-flex justify-content-center">
+    <div class="colum">
+        <?php foreach ($roomId as $room) : ?>
+            <div class="col">
+                <div class="card border-warning mb-3 shadow-sm p-3 mb-5 bg-body-tertiary rounded" style="width: 40rem;">
+                    <div class="card-body  bg-warning-subtle text-emphasis-success">
+                        <h5 class="card-title fw-bold "></h5>
+                        <p class="card-text ">Número de reserva: <?= $room->id ?></p>
+                        <?php if ($room->cant_noches===1) : ?>
+                        <p class="card-text "><?= $room->cant_noches ?> noche</p>
+                        <?php else : ?>
+                        <p class="card-text "><?= $room->cant_noches ?> noches</p>
+                        <?php endif ?>
+                        <p class="card-text ">USD <?= $room->precio ?>/ noche</p>
+
+                    </div>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+    </div>
+</div>
+
+<?php require 'templates/footer.phtml' ?>

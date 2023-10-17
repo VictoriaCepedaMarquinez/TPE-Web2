@@ -1,0 +1,32 @@
+<?php require 'templates/header.phtml' ?>
+<ul class="list-group text-secondary fw-light">
+    <div class="d-flex align-items-center flex-column  p-2 mb-3">
+        
+        <?php foreach ($rooms as $room) : ?>
+            <li>
+            <div class="list-group m-2 p-5">
+                <div class="d-flex justify-content-evenly">
+                    <img width="400" height="330" src="<?= $room->imagen ?>" alt="">
+                    <div class="list-group-item list-group-item-action pt-3">
+                        <div class="d-flex w-100 justify-content-between mt-4">
+                            <h3 class="mb-5"><?= $room->tamaño ?></h3>
+                            <small>USD <?=$room->precio ?>/ noche</small>
+                        </div>
+                        <p class="mb-5"> <?= $room->descripcion ?></p>
+                        <div class="d-flex justify-content-between">
+                            <small>2 huespedes</small>
+                            <button type="button" class="btn btn-success">
+                            <a class="nav-link active" aria-current="page" href="reserve/<?=$room->id?>">Reserva ahora</a>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>    
+           </li>
+       <?php endforeach ?>
+
+    </div>
+</ul>
+
+<?php require 'templates/footer.phtml' ?>

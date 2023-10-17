@@ -1,0 +1,72 @@
+<?php require 'templates/header.phtml' ?>
+<?php require 'templates/formaddrooms.phtml' ?>
+<h1 class="d-flex justify-content-center mb-4 mt-4">Listado de habitaciones</h1>
+<div class="d-flex justify-content-center ">
+<div class="w-75 p-3" >
+    <table class=" table-hover table-bordered  border-warning table-light table align-middle shadow p-3 mb-5 bg-body-tertiary rounded ">
+        <thead >
+            <tr class="table-warning border-warning text-center  shadow p-3 mb-5 bg-body-tertiary rounded" >
+                <th >ID</th>
+                <th>Tamaño</th>
+                <th>Descripcion</th>
+                <th>Imagen</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($rooms as $room) : ?>
+                <tr class="text-center fw-light" >
+                    <td><?= $room->id ?></td>
+                    <td><?= $room->tamaño ?></td>
+                    <td><?= $room->descripcion ?></td>
+                    <td><img width="300" height="250" src="<?= $room->imagen ?>" alt=""></td>
+                    <td><?= $room->precio ?></td>
+                    <td>
+                        <a href="updateRoom/" class="btn  btn-warning btn-sm mt-4  text-dark fw-bold" style="width: 100px; height: 30px;" data-bs-toggle="modal" data-bs-target="#editModal<?= $room->id ?>">Editar</a>
+                        <a href="deleteRoom/<?= $room->id ?>" class="btn btn-danger btn-sm mt-4  text-dark fw-bold" style="width: 100px; height: 30px;">Eliminar</a>
+                        <a href="reserveByCategorie/<?= $room->id ?>" class="btn btn-secondary btn-sm mt-4 text-dark fw-bold " style="width: 100px; height: 50px;">Ver listado de reservas</a>
+                    </td>
+                </tr>
+
+                <div class="modal fade" id="editModal<?= $room->id ?>" tabindex="-1" aria-labelledby="editModalLabel<?= $room->id ?>" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="updateRoom<?= $room->id ?>">Modificar</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="updateRoom" method="POST" enctype="multipart/form-data">
+                                    <input type="hidden" name="id" value="<?= $room->id ?>" >
+                                    <div class="form-group">
+                                        <label for="tamaño">Tamaño:</label>
+                                        <input type="text" name="tamaño" value="<?= $room->tamaño ?>" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="descripcion">Descripción:</label>
+                                        <input type="text" name="descripcion" value="<?= $room->descripcion ?>" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="imagen">Imagen:</label>
+                                        <input type="file" name="imagen" accept="image/*" class="form-control" >
+                                        <input type="hidden" name="imagen_actual" value="<?= $room->imagen ?>" />
+                                    </div>
+                                    <label for="precio">Precio:</label>
+                                    <input type="number" name="precio" value="<?= $room->precio ?>" class="form-control" required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+</div>
+</div>
+<?php require 'templates/footer.phtml' ?>

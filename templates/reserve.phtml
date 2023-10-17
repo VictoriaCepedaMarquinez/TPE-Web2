@@ -1,0 +1,117 @@
+<?php require 'templates/header.phtml' ?>
+<form action="<?=BASE_URL?>addReserve" method="POST" >
+  <div class="d-flex justify-content-center align-items-center mt-5">
+    <h1>Completar reserva</h1>
+  </div>
+  <div class="d-flex justify-content-around align-items-top m-5 p-5" style="margin-top: 0 !important;">
+    <div class="d-flex m-5 flex-column" style="width: 65%;">
+      <h4>Detalle de la reserva</h4>
+      <br />
+      <div class="row g-3" action="procesarReserva">
+        <div class="col-md-4">
+          <label for="inputEmail4" class="form-label">Usuario</label>
+          <input type="text" class="form-control" value="<?= $_SESSION['USER_NAME'] ?>" disabled>
+        </div>
+        <div class="col-md-4">
+          <label for="inputPassword4" class="form-label">Nombre</label>
+          <input  required type="text" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label for="inputPassword4" class="form-label">Apellido </label>
+          <input required type="text" class="form-control">
+        </div>
+        <div class="col-12">
+          <label for="inputState" class="form-label">Habitacion seleccionada</label>
+          <select required id="inputState" name="id_habitacion"  class="form-select">
+            <option value="<?= $room->id ?>"  selected>Habitacion <?= $room->tamaño ?></option>
+            <?php foreach($rooms as $r) :?>
+              <?php if($r->id != $room->id) :?>
+            <option id="selected-room" value="<?= $r->id ?>">Habitacion <?= $r->tamaño ?></option>
+            <?php endif?>
+            <?php endforeach?>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">Cantidad de noches</label>
+          <input required type="number" class="form-control"  name="cant_noches" id="inputNights" value="1">
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck" checked>
+            <label class="form-check-label" for="gridCheck">
+              Recordar datos para proximas reservas
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-column align-items-center" style="margin-top: 45px;">
+      <div class="col-md-5 col-lg-4 order-md-last" style="width: 500px;">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Su reserva</span>
+          <span class="badge bg-primary rounded-pill">3</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 id="room-name" class="my-0">Habitacion <?= $room->tamaño ?></h6>
+              <small id="nights" class="text-muted">1 noche</small>
+            </div>
+            <span id="night_price" class="text-muted">$<?= $room->precio ?></span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Paquete All Inclusive</h6>
+              <small class="text-muted">Grupo familiar</small>
+            </div>
+            <span class="text-muted">$250</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Excursiones guiadas</h6>
+              <small class="text-muted">Precio por persona</small>
+            </div>
+            <span class="text-muted">$30</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between bg-light">
+            <div class="text-success">
+              <h6 class="my-0">Descuento promocional</h6>
+              <small>Por pago online</small>
+            </div>
+            <span class="text-success">−$15</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong id="reserve_total">$<?= $room->precio + 250 + 30 - 15 ?></strong>
+          </li>
+        </ul>
+
+        <div class="d-flex justify-content-evenly flex-row card p-2">
+          <button type="submit" style="width: 95%;" class="btn btn-secondary"> Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let inputNights = document.getElementById("inputNights");
+    const price = parseInt(document.getElementById("night_price").innerText.replace("$", ""));
+    inputNights.addEventListener("input", () => {
+      document.getElementById("nights").innerText = inputNights.value + " noches";
+      document.getElementById("night_price").innerText = "$" + (price * inputNights.value);
+      let total = (price * inputNights.value) + 250 + 30 - 15;
+      document.getElementById("reserve_total").innerText = "$" + total;
+    })
+    var selectRoom =  document.getElementById("inputState");
+    selectRoom.onchange = ()=>{
+      let selectedOption = selectRoom.options[selectRoom.selectedIndex];
+      let selectedText = selectedOption.text;
+      document.getElementById("room-name").innerText = selectedText;
+    }
+  })
+</script>
+
+<?php require 'templates/footer.phtml' ?>
