@@ -17,9 +17,9 @@ class ReserveModel extends ModelDB {
         return $query->fetch(PDO::FETCH_OBJ);
     }
      
-    function insertReserve( $id_usuario,$id_habitacion,$cant_noches) {
+    function insertReserve( $id_usuario, $id_habitacion, $cant_noches) {
         $query = $this->db->prepare('INSERT INTO reserva ( id_usuario,id_habitacion,cant_noches) VALUES(?, ?, ?)');
-        $query->execute([$id_usuario,$id_habitacion,$cant_noches]);
+        $query->execute([$id_usuario, $id_habitacion, $cant_noches]);
         return $this->getLastReserve();
     }
 
@@ -39,8 +39,8 @@ class ReserveModel extends ModelDB {
        INNER JOIN habitacion ON reserva.id_habitacion = habitacion.id
        WHERE reserva.id = ?');
        $query->execute([$reserva_id]);
-       $prices = $query->fetch(PDO::FETCH_OBJ);
-        return $prices;
+       $price = $query->fetch(PDO::FETCH_OBJ);
+        return $price;
     }
 
     function getLastReserve(){
@@ -50,8 +50,8 @@ class ReserveModel extends ModelDB {
         ORDER BY r.id DESC
         LIMIT 1");
         $query->execute();
-        $result = $query->fetch(PDO::FETCH_OBJ);
-        return $result;
+        $lastReserve = $query->fetch(PDO::FETCH_OBJ);
+        return $lastReserve;
     }
 
     function getReserveAndRoomById($reserve_id){
@@ -60,8 +60,8 @@ class ReserveModel extends ModelDB {
         JOIN habitacion h ON (r.id_habitacion = h.id)
         WHERE r.id = ?');
         $query->execute([$reserve_id]);
-        $reserve = $query->fetch(PDO::FETCH_OBJ);
-         return $reserve;
+        $reserveAndRoom = $query->fetch(PDO::FETCH_OBJ);
+         return $reserveAndRoom;
     }
 
     function getReserveById($id){

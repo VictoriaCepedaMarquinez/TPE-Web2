@@ -56,8 +56,8 @@ class ReserveController extends ControllerAbs {
 
     public function confirmReserveList($id){
         $this->model->updateReserve($id);
-        header('Location: ' . BASE_URL . 'myReserves    ');
-     }
+        header('Location: ' . BASE_URL . 'listReserves');
+    }
 
     public function removeReserve($id){
         $this->model->deleteReserve($id);
@@ -76,21 +76,21 @@ class ReserveController extends ControllerAbs {
         $this->view->showDetailReserve($reserve, $total); 
     }
 
-    public function showReserves() {
+    public function showListReserves() {
         $reserves = $this->model->getReserves();
-        $this->view->showReserves($reserves);
+        $this->view->showListReserves($reserves);
     }
 
-    public function showReserve($id){ 
+    public function showAddReserve($id){ 
         $rooms = $this->roomsModel->getRooms();
         $room = $this->model->getRoomById($id);
-        $this->view->showReserve($room, $rooms);
+        $this->view->showAddReserve($room, $rooms);
     }
 
-    public function showReserveAndRoomById($id){
+    public function showModificReserve($id){
         $reserve = $this->model->getReserveAndRoomById($id);
         $rooms = $this->roomsModel->getRooms();
-        $this->view->showRoomByIdReserve($reserve, $rooms);
+        $this->view->showModificReserve($reserve, $rooms);
     }
 
 }

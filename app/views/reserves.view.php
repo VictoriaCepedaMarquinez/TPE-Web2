@@ -2,20 +2,20 @@
 
 class ReserveView {
 
-    public function showReserves($reserves) {
-        require 'templates/reserves.phtml';  
+    public function showListReserves($reserves) {
+        require 'templates/listReserves.phtml';  
     }
 
-    public function ShowReserve($room, $rooms){
-        require 'templates/reserve.phtml';
+    public function showAddReserve($room, $rooms){
+        require 'templates/formAddReserve.phtml';
     }
 
     public function showDetailReserve($reserve, $total){
         require 'templates/detailReserve.phtml';
     }
 
-    public function showRoomByIdReserve($reserve, $rooms){
-       require 'templates/form-reserves.phtml';
+    public function showModificReserve($reserve, $rooms){
+       require 'templates/formModificReserves.phtml';
     }
 
     public function showLastReserve($reserve, $total){

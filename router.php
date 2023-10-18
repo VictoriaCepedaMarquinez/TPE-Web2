@@ -25,13 +25,13 @@ switch ($params[0]) {
         $controller = new RoomsController();
         $controller->showRooms();
          break;    
-    case 'reserve':
+    case 'formAddReserve':
       $controller = new ReserveController();
-      $controller->showReserve($params[1]);
+      $controller->showAddReserve($params[1]);
       break;
-    case 'myReserves':
+    case 'listReserves':
         $controller = new ReserveController();
-        $controller->showReserves();
+        $controller->showListReserves();
      break;
     case 'login':       
        $controller = new AuthController();
@@ -59,7 +59,7 @@ switch ($params[0]) {
          break;  
     case 'formModificReserve':
         $controller = new ReserveController();
-        $controller->showReserveAndRoomById($params[1]);
+        $controller->showModificReserve($params[1]);
          break; 
    case 'formConfirmReserve':
         $controller = new ReserveController();

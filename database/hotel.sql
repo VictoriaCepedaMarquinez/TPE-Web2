@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2023 a las 03:16:17
+-- Tiempo de generación: 18-10-2023 a las 02:19:01
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -40,10 +40,10 @@ CREATE TABLE `habitacion` (
 --
 
 INSERT INTO `habitacion` (`id`, `tamaño`, `descripcion`, `imagen`, `precio`) VALUES
-(3, 'Doble deluxe', 'Las habitaciones cuentan con ventilador de techo, LED 32, cajas de seguridad digitales, secador de cabello, sommiers, calefacción central acceso a internet wi-fi, room service las 24 hs, servicio de lavandería, servicio de despertador, baño privado (con ducha), servicio de conserje, amenities shampoo y jabón, desayuno para celiacos incluido en la tarifa, información turística, sillas de bebé, servicio de ropa blanca, ropa de cama toallas y toallones.', 'images/habitacion_doble.jpg\r\n', 30),
-(4, 'Triple superior', 'Las habitaciones cuentan con LED 32, cajas de seguridad digitales, secador de cabello, sommiers, calefacción central, acceso a internet wi-fi, room service las 24 hs, servicio de lavandería, servicio de despertador, ventilador de techo, baño privado (con ducha), servicio de conserje, amenities shampoo y jabón, desayuno para celiacos incluido en la tarifa, información turística, sillas de bebé, servicio de ropa blanca, ropa de cama toallas y toallones.', 'images/habitacion_triple.jpg\r\n', 45),
-(5, 'Royal deluxe', 'Las habitaciones cuentan con LED 32, cajas de seguridad digitales, secador de cabello, sommiers, calefacción central, acceso a internet wi-fi, room service las 24 hs, servicio de lavandería, servicio de despertador,ventilador de techo, baño privado (con ducha), servicio de conserje, amenities shampoo y jabón, desayuno para celiacos incluido en la tarifa, información turística, sillas de bebé, servicio de ropa blanca, ropa de cama toallas y toallones.', 'images/habitacion_cuadruple.jpg\r\n', 60),
-(7, 'Simple superior ', 'Las habitaciones cuentan con LED 32, cajas de seguridad digitales, secador de cabello, sommiers, calefacción central, acceso a internet wi-fi, room service las 24 hs, servicio de lavandería, servicio de despertador,ventilador de techo, baño privado (con ducha), servicio de conserje, amenities shampoo y jabón, desayuno para celiacos incluido en la tarifa, información turística, sillas de bebé, servicio de ropa blanca, ropa de cama toallas y toallones.', 'images/652dce871c771.jpg', 15);
+(1, 'Doble deluxe', 'Las habitaciones cuentan con ventilador de techo, LED 32, cajas de seguridad digitales, secador de cabello, sommiers, calefacción central, acceso a internet wi-fi, room service las 24 hs, servicio de lavandería, servicio de despertador, baño privado (con ducha), servicio de conserje, amenities shampoo y jabón, desayuno para celiacos incluido en la tarifa, información turística, sillas de bebé, servicio de ropa blanca, ropa de cama toallas y toallones.', 'images/habitacion_doble.jpg', 30),
+(2, 'Triple superior', 'Las habitaciones cuentan con LED 32, cajas de seguridad digitales, secador de cabello, sommiers, calefacción central, acceso a internet wi-fi, room service las 24 hs, servicio de lavandería, servicio de despertador, ventilador de techo, baño privado (con ducha), servicio de conserje, amenities shampoo y jabón, desayuno para celiacos incluido en la tarifa, información turística, sillas de bebé, servicio de ropa blanca, ropa de cama toallas y toallones.', 'images/habitacion_triple.jpg', 45),
+(3, 'Royal deluxe', 'Las habitaciones cuentan con LED 32, cajas de seguridad digitales, secador de cabello, sommiers, calefacción central, acceso a internet wi-fi, room service las 24 hs, servicio de lavandería, servicio de despertador, ventilador de techo, baño privado (con ducha), servicio de conserje, amenities shampoo y jabón, desayuno para celiacos incluido en la tarifa, información turística, sillas de bebé, servicio de ropa blanca, ropa de cama toallas y toallones.', 'images/habitacion_cuadruple.jpg', 60),
+(4, 'Simple superior', 'Las habitaciones cuentan con LED 32, cajas de seguridad digitales, secador de cabello, sommiers, calefacción central, acceso a internet wi-fi, room service las 24 hs, servicio de lavandería, servicio de despertador, ventilador de techo, baño privado (con ducha), servicio de conserje, amenities shampoo y jabón, desayuno para celiacos incluido en la tarifa, información turística, sillas de bebé, servicio de ropa blanca, ropa de cama toallas y toallones.', 'images/652dce871c771.jpg', 15);
 
 -- --------------------------------------------------------
 
@@ -64,26 +64,25 @@ CREATE TABLE `reserva` (
 --
 
 INSERT INTO `reserva` (`id`, `id_usuario`, `id_habitacion`, `cant_noches`, `finalizada`) VALUES
-(58, 2, 5, 9, 0),
-(59, 2, 5, 9, 0),
-(60, 2, 4, 6, 0),
-(61, 2, 5, 1, 0),
-(62, 2, 4, 5, 0),
-(67, 2, 3, 6, 0),
-(68, 2, 3, 3, 0),
-(70, 2, 3, 1, 0),
-(71, 2, 3, 5, 0),
-(73, 2, 3, 1, 0),
-(75, 2, 4, 6, 0),
-(79, 2, 4, 3, 1),
-(80, 2, 4, 3, 1),
-(81, 2, 4, 3, 1),
-(84, 2, 4, 1, 1),
-(86, 2, 3, 1, 0),
-(88, 2, 3, 1, 0),
-(89, 2, 3, 1, 1),
-(90, 2, 3, 1, 0),
-(94, 2, 4, 3, 1);
+(1, 2, 5, 9, 0),
+(2, 2, 5, 9, 0),
+(3, 1, 4, 3, 1),
+(4, 2, 5, 1, 0),
+(5, 1, 4, 3, 1),
+(6, 1, 3, 2, 1),
+(7, 2, 3, 3, 1),
+(8, 2, 3, 1, 1),
+(40, 1, 2, 3, 1),
+(41, 1, 2, 2, 1),
+(43, 1, 1, 3, 1),
+(44, 1, 2, 3, 1),
+(46, 1, 4, 3, 1),
+(48, 1, 1, 1, 1),
+(49, 2, 1, 3, 1),
+(51, 1, 1, 4, 1),
+(53, 1, 1, 3, 1),
+(54, 2, 7, 1, 1),
+(56, 2, 3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -106,8 +105,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `dni`, `email`, `contraseña`, `admin`) VALUES
-(1, 'usuario', '', 0, '', '$2y$10$2oKqT.Tpcj4s.VZ6njy8.e0NiFJCPO5lqbXjfM2df32128rPAFWsS', 0),
-(2, 'webadmin', '', 0, '', '$2y$10$vSG5.BUGunF0bJvfXcFJluoobZ15T0bnAY340JisUI1mDvP24KZuS', 1);
+(1, 'usuario', '', 0, '', '$2y$10$HokaF/ur9pw8RxNj0j2hSuAjSCG227.bUW55LV6f6e.YibhqFASWO', 0),
+(2, 'webadmin', '', 0, '', '$2y$10$Ld.KZnDyj0d78w0BM.D2butl8sgFkG.xw6xcWWAMnYyS6JxhrtADC', 1);
 
 --
 -- Índices para tablas volcadas
@@ -123,9 +122,7 @@ ALTER TABLE `habitacion`
 -- Indices de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_habitaciones` (`id_habitacion`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `usuario`
@@ -141,30 +138,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `reserva`
---
-ALTER TABLE `reserva`
-  ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`id_habitacion`) REFERENCES `habitacion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reserva_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
